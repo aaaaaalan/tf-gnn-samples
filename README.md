@@ -1,6 +1,6 @@
 # TF Graph Neural Network Samples
 This repository is the code release corresponding to an article introducing
-graph neural networks (GNNs) with feature-wise linear modulation ([Brockschmidt, 2019](#brockschmidt-2019)).
+graph neural networks (GNNs) with feature-wise linear modulation ([Brockschmidt, 2019](#-2019)).
 In the paper, a number of GNN architectures are discussed:
 * Gated Graph Neural Networks (GGNN) ([Li et al., 2015](#li-et-al-2015)).
 * Relational Graph Convolutional Networks (RGCN) ([Schlichtkrull et al., 2016](#schlichtkrull-et-al-2016)).

@@ -74,12 +74,12 @@ def sparse_ggnn_layer(node_embeddings: tf.Tensor,
 
         # Collect incoming messages per edge type
         for edge_type_idx, adjacency_list_for_edge_type in enumerate(adjacency_lists):
-            edge_sources = adjacency_list_for_edge_type[:, 0]
+            edge_sources = adjacency_list_for_edge_type[:, 0]              # Shape [E, 1]
             edge_source_states = tf.nn.embedding_lookup(params=cur_node_states,
-                                                        ids=edge_sources)  # Shape [E, D]
+                                                        ids=edge_sources)  # Shape [E, D]   extract vector ids from params
             all_messages_for_edge_type = \
                 edge_type_to_message_transformation_layers[edge_type_idx](edge_source_states)  # Shape [E,D]
-            messages.append(all_messages_for_edge_type)
+            messages.append(all_messages_for_edge_type)  
             message_source_states.append(edge_source_states)
 
         messages = tf.concat(messages, axis=0)  # Shape [M, D]
@@ -92,4 +92,4 @@ def sparse_ggnn_layer(node_embeddings: tf.Tensor,
         new_node_states = gated_cell(aggregated_messages, [cur_node_states])[0]  # Shape [V, D]
         cur_node_states = new_node_states
 
-    return cur_node_states
+    return cur_node_states    # [V, state_dim] 
